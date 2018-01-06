@@ -216,22 +216,22 @@ var beepbox;
     Config.instrumentsPerChannelMax = 10;
     Config.partNames = ["3 (triplets)", "4 (standard)", "5", "6", "8"];
     Config.partCounts = [3, 4, 5, 6, 8];
-    Config.waveNames = ["triangle", "square", "glitch", "unnamed", "unnamed 2", "unnamed 3", "unnamed 4", "unnamed 5", "unnamed 6"];
-    Config.waveVolumes = [1.0, 0.5, 0.5, 0.5, 0.25, 0.15, 0.4, 0.4, 0.94, 0.5, 0.5, 1.0, 0.6, 0.2, 0.5];
+    Config.waveNames = ["triangle", "square", "glitch", "unnamed", "unnamed 2", "unnamed 3", "unnamed 4", "unnamed 5", "unnamed 6", "unnamed 7"];
+    Config.waveVolumes = [1.0, 0.5, 0.5, 0.5, 0.25, 0.15, 0.4, 0.4, 0.94, 0.5, 0.5, 1.0, 0.6, 0.2, 0.5, 0.6];
     Config.drumNames = ["retro", "white", "clang", "buzz", "hollow"];
-    Config.drumVolumes = [0.25, 1.0, 0.4, 0.3, 1.5];
-    Config.drumPitchRoots = [69, 69, 69, 69, 96];
-    Config.drumPitchFilterMult = [100.0, 8.0, 100.0, 100.0, 1.0];
+    Config.drumVolumes = [0.25, 1.0, 0.4, 0.3, 1.5, 1.0];
+    Config.drumPitchRoots = [69, 69, 69, 69, 96, 69];
+    Config.drumPitchFilterMult = [100.0, 8.0, 100.0, 100.0, 1.0, 1.0];
     Config.drumWaveIsSoft = [false, true, false, false, true];
     Config.filterNames = ["sustain sharp", "sustain medium", "sustain soft", "decay sharp", "decay medium", "decay soft", "ring"];
     Config.filterBases = [2.0, 3.5, 5.0, 1.0, 2.5, 4.0, -1.0, 4.0];
     Config.filterDecays = [0.0, 0.0, 0.0, 10.0, 7.0, 4.0, 0.2, 0.2];
     Config.filterVolumes = [0.4, 0.7, 1.0, 0.5, 0.75, 1.0, 1.0, 0.75];
     Config.envelopeNames = ["seamless", "sudden", "smooth", "slide"];
-    Config.effectNames = ["none", "vibrato light", "vibrato delayed", "vibrato heavy", "tremolo light", "tremolo heavy", "tremolo + vibrato"];
-    Config.effectVibratos = [0.0, 0.15, 0.3, 0.45, 0.0, 0.0, 1.0, 0.0, 0.05, 0.2];
-    Config.effectTremolos = [0.0, 0.0, 0.0, 0.0, 0.25, 0.5, 0.0, 1.0, 0.025, 0.2];
-    Config.effectVibratoDelays = [0, 0, 3, 0, 0, 0, 0];
+    Config.effectNames = ["none", "vibrato light", "vibrato delayed", "vibrato heavy", "tremolo light", "tremolo heavy", "tremolo + vibrato", "shake"];
+    Config.effectVibratos = [0.0, 0.15, 0.3, 0.45, 0.0, 0.0, 1.0, 0.0, 0.05, 0.2, 0.2];
+    Config.effectTremolos = [0.0, 0.0, 0.0, 0.0, 0.25, 0.5, 0.0, 1.0, 0.025, 0.2, 0.2];
+    Config.effectVibratoDelays = [0, 0, 3, 0, 0, 0, 0, 3];
     Config.chorusNames = ["union", "shimmer", "hum", "honky tonk", "dissonant", "fifths", "octaves", "bowed", "custom harmony", "unnamed"];
     Config.chorusIntervals = [0.0, 0.02, 0.05, 0.1, 0.25, 3.5, 6, 0.02, 0.05, 0.25];
     Config.chorusOffsets = [0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 6, 0.0, 0.0, 3];
@@ -265,6 +265,7 @@ var beepbox;
 		Config._centerWave([1.0, -0.65, 1.1, 0.0, 0.8, 1.1]),
 		Config._centerWave([1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0]),
 		Config._centerWave([1.0, 1.5, 1.25, 1.2, 1.3, 1.5]),
+		Config._centerWave([1.0, -1.0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0]),
     ];
     Config._drumWaves = [null, null, null, null, null];
     beepbox.Config = Config;
