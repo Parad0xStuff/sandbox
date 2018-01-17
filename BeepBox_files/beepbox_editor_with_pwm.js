@@ -216,8 +216,8 @@ var beepbox;
     Config.instrumentsPerChannelMax = 10;
     Config.partNames = ["3 (triplets)", "4 (standard)", "5", "6", "8"];
     Config.partCounts = [3, 4, 5, 6, 8];
-    Config.waveNames = ["triangle", "square", "glitch", "unnamed", "unnamed 2", "unnamed 3", "unnamed 4", "unnamed 5", "unnamed 6", "unnamed 7"];
-    Config.waveVolumes = [1.0, 0.5, 0.5, 0.5, 0.25, 0.15, 0.4, 0.4, 0.94, 0.5, 0.5, 1.0, 0.6, 0.2, 0.5, 0.6];
+    Config.waveNames = ["triangle", "square", "glitch", "unnamed", "unnamed 2", "unnamed 3", "unnamed 4", "unnamed 5", "unnamed 6", "unnamed 7", "unnamed 8"];
+    Config.waveVolumes = [1.0, 0.5, 0.5, 0.5, 0.25, 0.15, 0.4, 0.4, 0.94, 0.5, 0.5, 1.0, 0.6, 0.2, 0.5, 0.6, 0.8];
     Config.drumNames = ["retro", "white", "clang", "buzz", "hollow"];
     Config.drumVolumes = [0.25, 1.0, 0.4, 0.3, 1.5, 1.0];
     Config.drumPitchRoots = [69, 69, 69, 69, 96, 69];
@@ -239,10 +239,10 @@ var beepbox;
     Config.chorusHarmonizes = [false, false, false, false, false, false, false, false, true, false];
     Config.volumeNames = ["loudest", "loud", "medium", "quiet", "quietest", "mute"];
     Config.volumeValues = [0.0, 0.5, 1.0, 1.5, 2.0, -1.0];
-    Config.pitchChannelColorsDim = ["#539999", "#95933c", "#e75566", "#00a100", "#d020d0", "#7777b0"];
-    Config.pitchChannelColorsBright = ["#5eb1b1", "#b0ad44", "#ff9aa6", "#50ff50", "#ff90ff", "#a0a0ff"];
-    Config.pitchNoteColorsDim = ["#539999", "#95933c", "#e75566", "#00c700", "#e040e0", "#8888d0"];
-    Config.pitchNoteColorsBright = ["#5eb1b1", "#b0ad44", "#ff9aa6", "#a0ffa0", "#ffc0ff", "#d0d0ff"];
+    Config.pitchChannelColorsDim = ["#b2a66c", "#4baa87", "#bc4400", "#c6239e", "#b57d15", "#a88981"];
+    Config.pitchChannelColorsBright = ["#ffee9b", "#6bffc8", "#ff5d00", "#ff32cc", "#efa61f", "#f1c3b7"];
+    Config.pitchNoteColorsDim = ["#c4b364", "#43ad86", "#c60000", "#b7148e", "#c18311", "#b7978f"];
+    Config.pitchNoteColorsBright = ["#edd97b", "#55e8b1", "#ff0000", "#e819b4", "#f7a816", "#f2c9bf"];
     Config.drumChannelColorsDim = ["#6f6f6f", "#996633"];
     Config.drumChannelColorsBright = ["#aaaaaa", "#ddaa77"];
     Config.drumNoteColorsDim = ["#aaaaaa", "#cc9966"];
@@ -266,6 +266,7 @@ var beepbox;
 		Config._centerWave([1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0]),
 		Config._centerWave([1.0, 1.5, 1.25, 1.2, 1.3, 1.5]),
 		Config._centerWave([1.0, -1.0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0]),
+		Config._centerWave([0, 1, 0, 0, 1, 0, 1, 0, 0, 0]),
     ];
     Config._drumWaves = [null, null, null, null, null];
     beepbox.Config = Config;
