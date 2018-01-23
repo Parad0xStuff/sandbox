@@ -191,11 +191,12 @@ var beepbox;
         };
         return Config;
     }());
-    Config.scaleNames = ["easy", "semi-easy", "normal", "hard", "unlocked"];
+    Config.scaleNames = ["easy", "semi-easy", "normal", "normal minor", "hard", "unlocked"];
     Config.scaleFlags = [
         [true, false, true, false, true, false, false, true, false, true, false, false],
         [true, false, false, true, false, true, true, true, false, false, true, false],
         [true, false, true, false, true, true, false, true, false, true, false, true],
+		[true, false, true, true, false, true, false, true, true, false, true, false],
 		[true, false, true, true, true, false, true, false, true, true, true, false],
         [true, true, true, true, true, true, true, true, true, true, true, true],
     ];
@@ -219,9 +220,9 @@ var beepbox;
     Config.waveNames = ["triangle", "square", "glitch", "unnamed", "unnamed 2", "unnamed 3", "unnamed 4", "unnamed 5", "unnamed 6", "unnamed 7", "unnamed 8"];
     Config.waveVolumes = [1.0, 0.5, 0.5, 0.5, 0.25, 0.15, 0.4, 0.4, 0.94, 0.5, 0.5, 1.0, 0.6, 0.2, 0.5, 0.6, 0.8];
     Config.drumNames = ["retro", "white", "clang", "buzz", "hollow"];
-    Config.drumVolumes = [0.25, 1.0, 0.4, 0.3, 1.5, 1.0];
-    Config.drumPitchRoots = [69, 69, 69, 69, 96, 69];
-    Config.drumPitchFilterMult = [100.0, 8.0, 100.0, 100.0, 1.0, 1.0];
+    Config.drumVolumes = [0.25, 1.0, 0.4, 0.3, 1.5];
+    Config.drumPitchRoots = [69, 69, 69, 69, 96];
+    Config.drumPitchFilterMult = [100.0, 8.0, 100.0, 100.0, 1.0];
     Config.drumWaveIsSoft = [false, true, false, false, true];
     Config.filterNames = ["sustain sharp", "sustain medium", "sustain soft", "decay sharp", "decay medium", "decay soft", "ring"];
     Config.filterBases = [2.0, 3.5, 5.0, 1.0, 2.5, 4.0, -1.0, 4.0];
