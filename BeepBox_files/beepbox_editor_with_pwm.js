@@ -191,7 +191,7 @@ var beepbox;
         };
         return Config;
     }());
-    Config.scaleNames = ["easy :)", "easy :(", "island :)", "island :(", "blues :)", "blues :(", "normal :)", "normal :(", "dbl harmonic :)", "dbl harmonic :(", "enigma", "expert", "custom 1"];
+    Config.scaleNames = ["easy :)", "easy :(", "island :)", "island :(", "blues :)", "blues :(", "normal :)", "normal :(", "dbl harmonic :)", "dbl harmonic :(", "enigma", "expert", "lydian"];
     Config.scaleFlags = [
         [true, false, true, false, true, false, false, true, false, true, false, false],
         [true, false, false, true, false, true, false, true, false, false, true, false],
@@ -247,9 +247,9 @@ var beepbox;
     Config.chorusHarmonizes = [false, false, false, false, false, false, false, false, true, false];
     Config.volumeNames = ["loudest", "loud", "medium", "quiet", "quietest", "mute"];
     Config.volumeValues = [0.0, 0.5, 1.0, 1.5, 2.0, -1.0];
-    Config.pitchChannelColorsDim = ["#b2a66c", "#4baa87", "#bc4400", "#c6239e", "#b57d15", "#a88981"];
-    Config.pitchChannelColorsBright = ["#ffee9b", "#6bffc8", "#ff5d00", "#ff32cc", "#efa61f", "#f1c3b7"];
-    Config.pitchNoteColorsDim = ["#c4b364", "#43ad86", "#c60000", "#b7148e", "#c18311", "#b7978f"];
+    Config.pitchChannelColorsDim = ["#b2a66c", "#4baa87", "#c13600", "#c6239e", "#b57d15", "#a88981"];
+    Config.pitchChannelColorsBright = ["#ffee9b", "#6bffc8", "#ff4800", "#ff32cc", "#efa61f", "#f1c3b7"];
+    Config.pitchNoteColorsDim = ["#c4b364", "#43ad86", "#9b0000", "#b7148e", "#c18311", "#b7978f"];
     Config.pitchNoteColorsBright = ["#edd97b", "#55e8b1", "#ff0000", "#e819b4", "#f7a816", "#f2c9bf"];
     Config.drumChannelColorsDim = ["#6f6f6f", "#996633"];
     Config.drumChannelColorsBright = ["#aaaaaa", "#ddaa77"];
