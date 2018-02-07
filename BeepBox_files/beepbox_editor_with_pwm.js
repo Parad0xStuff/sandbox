@@ -222,10 +222,10 @@ var beepbox;
     Config.patternsPerChannelMax = 64;
     Config.instrumentsPerChannelMin = 1;
     Config.instrumentsPerChannelMax = 10;
-    Config.partNames = ["÷3 (triplets)", "÷4 (standard)", "÷6", "÷8"];
-    Config.partCounts = [3, 4, 6, 8];
-    Config.waveNames = ["triangle", "square", "pulse wide", "pulse narrow", "sawtooth", "double saw", "double pulse", "spiky", "plateau", "glitch", "lute", "squaretooth", "lyre", "tuba", "piccolo", "shrill lute", "bassoon", "shrill bass", "nes pulse", "saw bass", "euphonium", "shrill pulse"];
-    Config.waveVolumes = [1.0, 0.5, 0.5, 0.5, 0.65, 0.5, 0.4, 0.4, 0.94, 0.5, 0.5, 0.25, 0.15, 0.4, 0.4, 0.94, 0.5, 0.5, 0.6, 0.3, 0.3, 0.4];
+    Config.partNames = ["÷3 (triplets)", "÷4 (standard)", "÷6", "÷8", "÷9", "÷12", "÷24"];
+    Config.partCounts = [3, 4, 6, 8, 9, 12, 24];
+    Config.waveNames = ["triangle", "square", "pulse wide", "pulse narrow", "sawtooth", "double saw", "double pulse", "spiky", "plateau", "glitch", "lute", "squaretooth", "lyre", "tuba", "piccolo", "shrill lute", "bassoon", "shrill bass", "nes pulse", "saw bass", "euphonium", "shrill pulse", "r-sawtooth", "recorder"];
+    Config.waveVolumes = [1.0, 0.5, 0.5, 0.5, 0.65, 0.5, 0.4, 0.4, 0.94, 0.5, 0.5, 0.25, 0.15, 0.4, 0.4, 0.94, 0.5, 0.5, 0.6, 0.3, 0.3, 0.4, 0.5, 0.5];
     Config.drumNames = ["retro", "white", "clang", "buzz", "hollow"];
     Config.drumVolumes = [0.25, 1.0, 0.4, 0.3, 1.5];
     Config.drumPitchRoots = [69, 69, 69, 69, 96];
@@ -235,7 +235,7 @@ var beepbox;
     Config.filterBases = [2.0, 3.5, 5.0, 1.0, 2.5, 4.0, -1.0, 1.0, 5];
     Config.filterDecays = [0.0, 0.0, 0.0, 10.0, 7.0, 4.0, 0.2, 0.0, 7.5];
     Config.filterVolumes = [0.4, 0.7, 1.0, 0.5, 0.75, 1.0, 1.0, 1.0, 1.5];
-    Config.envelopeNames = ["seamless", "sudden", "smooth", "slide", "spring"];
+    Config.envelopeNames = ["seamless", "sudden", "smooth", "slide", "spring", "subdued"]; // The place to add these is around line 1850.
     Config.effectNames = ["none", "vibrato light", "vibrato delayed", "vibrato heavy", "tremolo light", "tremolo heavy", "tremolo + vibrato", "shake"];
     Config.effectVibratos = [0.0, 0.15, 0.3, 0.45, 0.0, 0.0, 1.0, 0.0, 0.05, 0.2, 0.2];
     Config.effectTremolos = [0.0, 0.0, 0.0, 0.0, 0.25, 0.5, 0.0, 1.0, 0.025, 0.2, 0.2];
@@ -285,7 +285,9 @@ var beepbox;
         Config._centerWave([2.1, -2.2, 1.2, 3]),
 		Config._centerWave([1, 1, 1, 1, 0, 2, 1, 2, 3, 1, -2, 1, 4, 1, 4, 2, 1, 6, -3, 4, 2, 1, 5, 1, 4, 1, 5, 6, 7, 1, 6, 1, 4, 1, 9]),
 		Config._centerWave([0, 1, 2, 1, 2, 1, 4, 2, 5, 0, -2, 1, 5, 1, 2, 1, 2, 4, 5, 1, 5, -2, 5, 10, 1]),
-		Config._centerWave([4 -2, 0, 4, 1, 4, 6, 7, 3 ]),
+		Config._centerWave([4 -2, 0, 4, 1, 4, 6, 7, 3]),
+		Config._centerWave([6.1, -2.9, 1.4, -2.9]),
+		Config._centerWave([5.0, -5.1, 4.0, -4.1, 3.0, -3.1, 2.0, -2.1, 1.0, -1.1, 6.0]),
     ];
     Config._drumWaves = [null, null, null, null, null];
     beepbox.Config = Config;
@@ -1849,6 +1851,9 @@ var beepbox;
 					
 					else if (envelope == 4) {
 					arpeggioVolumeStart = 6.0;}
+					
+					else if (envelope == 5) {
+					arpeggioVolumeStart = 0.5;}
 						
                     else if (envelope == 3) {
                         if (prevNote == null) {
