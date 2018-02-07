@@ -224,18 +224,18 @@ var beepbox;
     Config.instrumentsPerChannelMax = 10;
     Config.partNames = ["÷3 (triplets)", "÷4 (standard)", "÷6", "÷8"];
     Config.partCounts = [3, 4, 6, 8];
-    Config.waveNames = ["triangle", "square", "pulse wide", "pulse narrow", "sawtooth", "double saw", "double pulse", "spiky", "plateau", "glitch", "lute", "squaretooth", "lyre", "tuba", "piccolo", "shrill lute", "bassoon", "shrill bass", "nes pulse", "saw bass"];
-    Config.waveVolumes = [1.0, 0.5, 0.5, 0.5, 0.65, 0.5, 0.4, 0.4, 0.94, 0.5, 0.5, 0.25, 0.15, 0.4, 0.4, 0.94, 0.5, 0.5, 0.6, 0.3, 0.5];
+    Config.waveNames = ["triangle", "square", "pulse wide", "pulse narrow", "sawtooth", "double saw", "double pulse", "spiky", "plateau", "glitch", "lute", "squaretooth", "lyre", "tuba", "piccolo", "shrill lute", "bassoon", "shrill bass", "nes pulse", "saw bass", "euphonium", "shrill pulse"];
+    Config.waveVolumes = [1.0, 0.5, 0.5, 0.5, 0.65, 0.5, 0.4, 0.4, 0.94, 0.5, 0.5, 0.25, 0.15, 0.4, 0.4, 0.94, 0.5, 0.5, 0.6, 0.3, 0.3, 0.4];
     Config.drumNames = ["retro", "white", "clang", "buzz", "hollow"];
     Config.drumVolumes = [0.25, 1.0, 0.4, 0.3, 1.5];
     Config.drumPitchRoots = [69, 69, 69, 69, 96];
     Config.drumPitchFilterMult = [100.0, 8.0, 100.0, 100.0, 1.0];
     Config.drumWaveIsSoft = [false, true, false, false, true];
-    Config.filterNames = ["sustain sharp", "sustain medium", "sustain soft", "decay sharp", "decay medium", "decay soft", "ring", "overtone"];
-    Config.filterBases = [2.0, 3.5, 5.0, 1.0, 2.5, 4.0, -1.0, 1.0];
-    Config.filterDecays = [0.0, 0.0, 0.0, 10.0, 7.0, 4.0, 0.2, 0.0];
-    Config.filterVolumes = [0.4, 0.7, 1.0, 0.5, 0.75, 1.0, 1.0, 1.0];
-    Config.envelopeNames = ["seamless", "sudden", "smooth", "slide"];
+    Config.filterNames = ["sustain sharp", "sustain medium", "sustain soft", "decay sharp", "decay medium", "decay soft", "ring", "overtone", "faint"];
+    Config.filterBases = [2.0, 3.5, 5.0, 1.0, 2.5, 4.0, -1.0, 1.0, 5];
+    Config.filterDecays = [0.0, 0.0, 0.0, 10.0, 7.0, 4.0, 0.2, 0.0, 7.5];
+    Config.filterVolumes = [0.4, 0.7, 1.0, 0.5, 0.75, 1.0, 1.0, 1.0, 1.5];
+    Config.envelopeNames = ["seamless", "sudden", "smooth", "slide", "spring"];
     Config.effectNames = ["none", "vibrato light", "vibrato delayed", "vibrato heavy", "tremolo light", "tremolo heavy", "tremolo + vibrato", "shake"];
     Config.effectVibratos = [0.0, 0.15, 0.3, 0.45, 0.0, 0.0, 1.0, 0.0, 0.05, 0.2, 0.2];
     Config.effectTremolos = [0.0, 0.0, 0.0, 0.0, 0.25, 0.5, 0.0, 1.0, 0.025, 0.2, 0.2];
@@ -284,6 +284,8 @@ var beepbox;
 		Config._centerWave([0, 1, 0, 0, 1, 0, 1, 0, 0, 0]),
         Config._centerWave([2.1, -2.2, 1.2, 3]),
 		Config._centerWave([1, 1, 1, 1, 0, 2, 1, 2, 3, 1, -2, 1, 4, 1, 4, 2, 1, 6, -3, 4, 2, 1, 5, 1, 4, 1, 5, 6, 7, 1, 6, 1, 4, 1, 9]),
+		Config._centerWave([0, 1, 2, 1, 2, 1, 4, 2, 5, 0, -2, 1, 5, 1, 2, 1, 2, 4, 5, 1, 5, -2, 5, 10, 1]),
+		Config._centerWave([4 -2, 0, 4, 1, 4, 6, 7, 3 ]),
     ];
     Config._drumWaves = [null, null, null, null, null];
     beepbox.Config = Config;
@@ -1844,6 +1846,10 @@ var beepbox;
                     else if (envelope == 2) {
                         arpeggioVolumeStart = 0.0;
                     }
+					
+					else if (envelope == 4) {
+					arpeggioVolumeStart = 6.0;}
+						
                     else if (envelope == 3) {
                         if (prevNote == null) {
                             arpeggioVolumeStart = 0.0;
@@ -6239,7 +6245,7 @@ var beepbox;
             this._exportButton = button({ style: "margin: 5px 0;", type: "button" }, [text("Export")]);
             this._scaleDropDown = buildOptions(select({ style: "width:9em;" }), beepbox.Config.scaleNames);
             this._keyDropDown = buildOptions(select({ style: "width:9em;" }), beepbox.Config.keyNames);
-            this._tempoSlider = input({ style: "width: 9em; margin: 0px;", type: "range", min: "0", max: "11", value: "7", step: "1" });
+            this._tempoSlider = input({ style: "width: 9em; margin: 0px;", type: "range", min: "0", max: "20", value: "7", step: "0.5" });
             this._reverbSlider = input({ style: "width: 9em; margin: 0px;", type: "range", min: "0", max: "3", value: "0", step: "1" });
             this._partDropDown = buildOptions(select({ style: "width:9em;" }), beepbox.Config.partNames);
             this._patternSettingsLabel = div({ style: "visibility: hidden; margin: 3px 0; text-align: center;" }, [text("Pattern Settings")]);
