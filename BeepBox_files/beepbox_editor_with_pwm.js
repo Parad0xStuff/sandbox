@@ -214,7 +214,7 @@ var beepbox;
     Config.keyTransposes = [23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12];
     Config.tempoNames = ["molasses", "slow", "leisurely", "moderate", "steady", "brisk", "hasty", "fast", "strenuous", "grueling", "hyper", "ludicrous"];
     Config.reverbRange = 4;
-    Config.beatsPerBarMin = 3;
+    Config.beatsPerBarMin = 1;
     Config.beatsPerBarMax = 16;
     Config.barCountMin = 1;
     Config.barCountMax = 128;
@@ -225,7 +225,7 @@ var beepbox;
     Config.partNames = ["÷3 (triplets)", "÷4 (standard)", "÷6", "÷8", "÷9", "÷12", "÷24"];
     Config.partCounts = [3, 4, 6, 8, 9, 12, 24];
     Config.waveNames = ["triangle", "square", "pulse wide", "pulse narrow", "sawtooth", "double saw", "double pulse", "spiky", "plateau", "glitch", "lute", "squaretooth", "lyre", "tuba", "piccolo", "shrill lute", "bassoon", "shrill bass", "nes pulse", "saw bass", "euphonium", "shrill pulse", "r-sawtooth", "recorder"];
-    Config.waveVolumes = [1.0, 0.5, 0.5, 0.5, 0.65, 0.5, 0.4, 0.4, 0.94, 0.5, 0.5, 0.25, 0.15, 0.4, 0.4, 0.94, 0.5, 0.5, 0.6, 0.3, 0.3, 0.4, 0.5, 0.5];
+    Config.waveVolumes = [1.0, 0.5, 0.5, 0.5, 0.65, 0.5, 0.4, 0.4, 0.94, 0.5, 0.5, 0.25, 0.15, 0.4, 0.4, 0.94, 0.5, 0.5, 0.4, 0.25, 0.3, 0.3, 0.2, 0.2];
     Config.drumNames = ["retro", "white", "clang", "buzz", "hollow"];
     Config.drumVolumes = [0.25, 1.0, 0.4, 0.3, 1.5];
     Config.drumPitchRoots = [69, 69, 69, 69, 96];
@@ -236,15 +236,15 @@ var beepbox;
     Config.filterDecays = [0.0, 0.0, 0.0, 10.0, 7.0, 4.0, 0.2, 0.0, 7.5];
     Config.filterVolumes = [0.4, 0.7, 1.0, 0.5, 0.75, 1.0, 1.0, 1.0, 1.5];
     Config.envelopeNames = ["seamless", "sudden", "smooth", "slide", "spring", "subdued"]; // The place to add these is around line 1850.
-    Config.effectNames = ["none", "vibrato light", "vibrato delayed", "vibrato heavy", "tremolo light", "tremolo heavy", "tremolo + vibrato", "shake"];
-    Config.effectVibratos = [0.0, 0.15, 0.3, 0.45, 0.0, 0.0, 1.0, 0.0, 0.05, 0.2, 0.2];
-    Config.effectTremolos = [0.0, 0.0, 0.0, 0.0, 0.25, 0.5, 0.0, 1.0, 0.025, 0.2, 0.2];
-    Config.effectVibratoDelays = [0, 0, 3, 0, 0, 0, 0, 3];
-    Config.chorusNames = ["union", "shimmer", "hum", "honky tonk", "dissonant", "fifths", "octaves", "bowed", "custom harmony", "voiced"];
-    Config.chorusIntervals = [0.0, 0.02, 0.05, 0.1, 0.25, 3.5, 6, 0.02, 0.05, 0.25];
-    Config.chorusOffsets = [0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 6, 0.0, 0.0, 3];
-    Config.chorusVolumes = [0.7, 0.8, 1.0, 1.0, 0.9, 0.9, 0.8, 1.0, 1.0, 0.95];
-    Config.chorusHarmonizes = [false, false, false, false, false, false, false, false, true, false];
+    Config.effectNames = ["none", "vibrato light", "vibrato delayed", "vibrato heavy", "tremolo light", "tremolo heavy", "tremolo + vibrato", "shake", "tremolo delayed"];
+    Config.effectVibratos = [0.0, 0.15, 0.3, 0.45, 0.0, 0.0, 1.0, 0.0, 0.05, 0.2, 0.2, 0.0];
+    Config.effectTremolos = [0.0, 0.0, 0.0, 0.0, 0.25, 0.5, 0.0, 1.0, 0.025, 0.2, 0.2, 0.025];
+    Config.effectVibratoDelays = [0, 0, 3, 0, 0, 0, 0, 3, 3];
+	Config.chorusNames = ["union", "shimmer", "hum", "honky tonk", "dissonant", "fifths", "octaves", "bowed", "harmonic", "harmonic hum", "voiced", "tenths"];
+	Config.chorusIntervals = [0.0, 0.02, 0.05, 0.1, 0.25, 3.5, 6, 0.02, 0.02, 0.05, 0.25, 7];
+	Config.chorusOffsets = [0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 6, 0.0, 0.0, 0.0, 3, 7];
+	Config.chorusVolumes = [0.7, 0.8, 1.0, 1.0, 0.9, 0.9, 0.8, 1.0, 0.7, 1.0, 0.95, 0.9];
+	Config.chorusHarmonizes = [false, false, false, false, false, false, false, false, true, true, false, false, false];
     Config.volumeNames = ["loudest", "loud", "medium", "quiet", "quietest", "mute"];
     Config.volumeValues = [0.0, 0.5, 1.0, 1.5, 2.0, -1.0];
     Config.pitchChannelColorsDim = ["#b2a66c", "#4baa87", "#c13600", "#c6239e", "#b57d15", "#a88981"];
@@ -1853,7 +1853,8 @@ var beepbox;
 					arpeggioVolumeStart = 6.0;}
 					
 					else if (envelope == 5) {
-					arpeggioVolumeStart = 0.5;}
+					arpeggioVolumeStart = 0.5;
+					inhibitRestart = true}
 						
                     else if (envelope == 3) {
                         if (prevNote == null) {
