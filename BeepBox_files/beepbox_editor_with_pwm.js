@@ -145,6 +145,47 @@ var beepbox;
                         wave[i] = Math.random() * 2.0 - 1.0;
                     }
                 }
+				
+				
+                else if (index == 5) {
+                    var drumBuffer = 1;
+                    for (var i = 0; i < 32768; i++) {
+                        wave[i] = (drumBuffer & 1) * 2.0 - 1.0;
+                        var newBuffer = drumBuffer >> 1;
+                        if (((drumBuffer + newBuffer) & 1) == 1) {
+                            newBuffer += 2 << 50;
+                        }
+                        drumBuffer = newBuffer;
+                    }
+                }
+				
+                else if (index == 6) {
+                    var drumBuffer = 1;
+                    for (var i = 0; i < 32768; i++) {
+                        wave[i] = (drumBuffer & 1) * 4.0 / 11;
+                        var newBuffer = drumBuffer >> 1;
+                        if (((drumBuffer + newBuffer) & 1) == 1) {
+                            newBuffer += 15 << 2;
+                        }
+                        drumBuffer = newBuffer;
+                    }
+                }
+				
+                else if (index == 7) {
+                    for (var i = 1 << 10; i < (1 << 11); i++) {
+                        var amplitude = 2.0;
+                        var radians = Math.random() * Math.PI * 2.0;
+                        wave[i] = Math.cos(radians) * amplitude;
+                        wave[32768 - i] = Math.sin(radians) * amplitude;
+                    }
+                    for (var i = 1 << 11; i < (1 << 20); i++) {
+                        var amplitude = 2;
+                        var radians = Math.random() * Math.PI * 2.0;
+                        wave[i] = Math.cos(radians) * amplitude;
+                        wave[32768 - i] = Math.sin(radians) * amplitude;
+                    }
+                }
+				
                 else if (index == 2) {
                     var drumBuffer = 1;
                     for (var i = 0; i < 32768; i++) {
@@ -226,11 +267,11 @@ var beepbox;
     Config.partCounts = [3, 4, 6, 8, 9, 12, 24];
     Config.waveNames = ["triangle", "square", "pulse wide", "pulse narrow", "sawtooth", "double saw", "double pulse", "spiky", "plateau", "glitch", "lute", "squaretooth", "lyre", "tuba", "piccolo", "shrill lute", "bassoon", "shrill bass", "nes pulse", "saw bass", "euphonium", "shrill pulse", "r-sawtooth", "recorder"];
     Config.waveVolumes = [1.0, 0.5, 0.5, 0.5, 0.65, 0.5, 0.4, 0.4, 0.94, 0.5, 0.5, 0.25, 0.15, 0.4, 0.4, 0.94, 0.5, 0.5, 0.4, 0.25, 0.3, 0.3, 0.2, 0.2];
-    Config.drumNames = ["retro", "white", "clang", "buzz", "hollow"];
-    Config.drumVolumes = [0.25, 1.0, 0.4, 0.3, 1.5];
-    Config.drumPitchRoots = [69, 69, 69, 69, 96];
-    Config.drumPitchFilterMult = [100.0, 8.0, 100.0, 100.0, 1.0];
-    Config.drumWaveIsSoft = [false, true, false, false, true];
+    Config.drumNames = ["retro", "white", "clang", "buzz", "hollow", "chime", "harsh", "static"]; // The place to add these is around line 150.
+    Config.drumVolumes = [0.25, 1.0, 0.4, 0.3, 1.5, 1.0, 2.5, 0.27];
+    Config.drumPitchRoots = [69, 69, 69, 69, 96, 69, 69, 96, 96];
+    Config.drumPitchFilterMult = [100.0, 8.0, 100.0, 100.0, 1.0, 1.0, 1.0, 100.0, 1.0];
+    Config.drumWaveIsSoft = [false, true, false, false, true, true, true, true];
     Config.filterNames = ["sustain sharp", "sustain medium", "sustain soft", "decay sharp", "decay medium", "decay soft", "ring", "overtone", "faint"];
     Config.filterBases = [2.0, 3.5, 5.0, 1.0, 2.5, 4.0, -1.0, 1.0, 5];
     Config.filterDecays = [0.0, 0.0, 0.0, 10.0, 7.0, 4.0, 0.2, 0.0, 7.5];
@@ -288,6 +329,7 @@ var beepbox;
 		Config._centerWave([4 -2, 0, 4, 1, 4, 6, 7, 3]),
 		Config._centerWave([6.1, -2.9, 1.4, -2.9]),
 		Config._centerWave([5.0, -5.1, 4.0, -4.1, 3.0, -3.1, 2.0, -2.1, 1.0, -1.1, 6.0]),
+		Config._centerWave([0.1, 0.13 / -0.1 ,0.13 / -0.3 ,0.13 / -0.5 ,0.13 / -0.7 ,0.13 / -0.9 ,0.13 / -0.11 ,0.13 / -0.31 ,0.13 / -0.51 ,0.13 / -0.71 ,0.13 / -0.91 ,0.13 / -0.12 ,0.13 / -0.32 ,0.13 / -0.52 ,0.13 / -0.72 ,0.13 / -0.92 ,0.13 / -0.13 ,0.13 / 0.13 ,0.13 / 0.92 ,0.13 / 0.72 ,0.13 / 0.52 ,0.13 / 0.32 ,0.13 / 0.12 ,0.13 / 0.91 ,0.13 / 0.71 ,0.13 / 0.51 ,0.13 / 0.31 ,0.13 / 0.11 ,0.13 / 0.9 ,0.13 / 0.7 ,0.13 / 0.5 ,0.13 / 0.3 ,0.13]),
     ];
     Config._drumWaves = [null, null, null, null, null];
     beepbox.Config = Config;
@@ -6251,7 +6293,7 @@ var beepbox;
             this._exportButton = button({ style: "margin: 5px 0;", type: "button" }, [text("Export")]);
             this._scaleDropDown = buildOptions(select({ style: "width:9em;" }), beepbox.Config.scaleNames);
             this._keyDropDown = buildOptions(select({ style: "width:9em;" }), beepbox.Config.keyNames);
-            this._tempoSlider = input({ style: "width: 9em; margin: 0px;", type: "range", min: "0", max: "20", value: "7", step: "0.5" });
+            this._tempoSlider = input({ style: "width: 9em; margin: 0px;", type: "range", min: "0", max: "11", value: "7", step: "0.5" });
             this._reverbSlider = input({ style: "width: 9em; margin: 0px;", type: "range", min: "0", max: "3", value: "0", step: "1" });
             this._partDropDown = buildOptions(select({ style: "width:9em;" }), beepbox.Config.partNames);
             this._patternSettingsLabel = div({ style: "visibility: hidden; margin: 3px 0; text-align: center;" }, [text("Pattern Settings")]);
