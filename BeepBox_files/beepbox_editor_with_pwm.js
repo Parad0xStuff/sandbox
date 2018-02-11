@@ -232,7 +232,7 @@ var beepbox;
         };
         return Config;
     }());
-    Config.scaleNames = ["easy :)", "easy :(", "island :)", "island :(", "blues :)", "blues :(", "normal :)", "normal :(", "dbl harmonic :)", "dbl harmonic :(", "enigma", "expert", "lydian"];
+    Config.scaleNames = ["easy :)", "easy :(", "island :)", "island :(", "blues :)", "blues :(", "normal :)", "normal :(", "dbl harmonic :)", "dbl harmonic :(", "enigma", "expert", "lydian", "harmonic minor"];
     Config.scaleFlags = [
         [true, false, true, false, true, false, false, true, false, true, false, false],
         [true, false, false, true, false, true, false, true, false, false, true, false],
@@ -247,6 +247,7 @@ var beepbox;
         [true, false, true, false, true, false, true, false, true, false, true, false],
         [true, true, true, true, true, true, true, true, true, true, true, true],
 		[true, false, true, true, true, false, true, false, true, true, true, false],
+		[true, false, true, false, false, true, false, true, true, false, false, true],
     ];
     Config.pianoScaleFlags = [true, false, true, false, true, true, false, true, false, true, false, true];
     Config.blackKeyNameParents = [-1, 1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1];
@@ -265,10 +266,10 @@ var beepbox;
     Config.instrumentsPerChannelMax = 10;
     Config.partNames = ["÷3 (triplets)", "÷4 (standard)", "÷6", "÷8", "÷9", "÷12", "÷24"];
     Config.partCounts = [3, 4, 6, 8, 9, 12, 24];
-    Config.waveNames = ["triangle", "square", "pulse wide", "pulse narrow", "sawtooth", "double saw", "double pulse", "spiky", "plateau", "glitch", "lute", "squaretooth", "lyre", "tuba", "piccolo", "shrill lute", "bassoon", "shrill bass", "nes pulse", "saw bass", "euphonium", "shrill pulse", "r-sawtooth", "recorder"];
-    Config.waveVolumes = [1.0, 0.5, 0.5, 0.5, 0.65, 0.5, 0.4, 0.4, 0.94, 0.5, 0.5, 0.25, 0.15, 0.4, 0.4, 0.94, 0.5, 0.5, 0.4, 0.25, 0.3, 0.3, 0.2, 0.2];
+    Config.waveNames = ["triangle", "square", "pulse wide", "pulse narrow", "sawtooth", "double saw", "double pulse", "spiky", "plateau", "glitch", "lute", "squaretooth", "lyre", "tuba", "piccolo", "shrill lute", "bassoon", "shrill bass", "nes pulse", "saw bass", "euphonium", "shrill pulse", "r-sawtooth", "recorder", "narrow saw"];
+    Config.waveVolumes = [1.0, 0.5, 0.5, 0.5, 0.65, 0.5, 0.4, 0.4, 0.94, 0.5, 0.5, 0.25, 0.15, 0.4, 0.4, 0.94, 0.5, 0.5, 0.4, 0.25, 0.3, 0.3, 0.2, 0.2, 1.2];
     Config.drumNames = ["retro", "white", "clang", "buzz", "hollow", "chime", "harsh", "static"]; // The place to add these is around line 150.
-    Config.drumVolumes = [0.25, 1.0, 0.4, 0.3, 1.5, 1.0, 2.5, 0.27];
+    Config.drumVolumes = [0.25, 1.0, 0.4, 0.3, 1.5, 2, 10, 0.27];
     Config.drumPitchRoots = [69, 69, 69, 69, 96, 69, 69, 96, 96];
     Config.drumPitchFilterMult = [100.0, 8.0, 100.0, 100.0, 1.0, 1.0, 1.0, 100.0, 1.0];
     Config.drumWaveIsSoft = [false, true, false, false, true, true, true, true];
@@ -281,21 +282,21 @@ var beepbox;
     Config.effectVibratos = [0.0, 0.15, 0.3, 0.45, 0.0, 0.0, 1.0, 0.0, 0.05, 0.2, 0.2, 0.0];
     Config.effectTremolos = [0.0, 0.0, 0.0, 0.0, 0.25, 0.5, 0.0, 1.0, 0.025, 0.2, 0.2, 0.025];
     Config.effectVibratoDelays = [0, 0, 3, 0, 0, 0, 0, 3, 3];
-	Config.chorusNames = ["union", "shimmer", "hum", "honky tonk", "dissonant", "fifths", "octaves", "bowed", "harmonic", "harmonic hum", "voiced", "tenths", "fluctuate"];
-	Config.chorusIntervals = [0.0, 0.02, 0.05, 0.1, 0.25, 3.5, 6, 0.02, 0.0, 0.05, 0.25, 7, 12];
-	Config.chorusOffsets = [0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 6, 0.0, 0.0, 0.0, 3, 7, 0.0];
-	Config.chorusVolumes = [0.7, 0.8, 1.0, 1.0, 0.9, 0.9, 0.8, 1.0, 0.7, 1.0, 0.95, 0.9, 1.0];
-	Config.chorusHarmonizes = [false, false, false, false, false, false, false, false, true, true, false, false, false, false];
+    Config.chorusNames = ["union", "shimmer", "hum", "honky tonk", "dissonant", "fifths", "octaves", "bowed", "harmonic", "harmonic hum", "voiced", "tenths", "fluctuate", "recurve"];
+    Config.chorusIntervals = [0.0, 0.02, 0.05, 0.1, 0.25, 3.5, 6, 0.02, 0.0, 0.05, 0.25, 7, 12, 0.005];
+    Config.chorusOffsets = [0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 6, 0.0, 0.0, 0.0, 3, 7, 0.0, 0.0];
+    Config.chorusVolumes = [0.7, 0.8, 1.0, 1.0, 0.9, 0.9, 0.8, 1.0, 0.7, 1.0, 0.95, 0.9, 1.0, 0.8];
+    Config.chorusHarmonizes = [false, false, false, false, false, false, false, false, true, true, false, false, false, false];
     Config.volumeNames = ["loudest", "loud", "medium", "quiet", "quietest", "mute"];
     Config.volumeValues = [0.0, 0.5, 1.0, 1.5, 2.0, -1.0];
-    Config.pitchChannelColorsDim = ["#b2a66c", "#4baa87", "#c13600", "#c6239e", "#b57d15", "#a88981"];
-    Config.pitchChannelColorsBright = ["#ffee9b", "#6bffc8", "#ff4800", "#ff32cc", "#efa61f", "#f1c3b7"];
-    Config.pitchNoteColorsDim = ["#c4b364", "#43ad86", "#9b0000", "#b7148e", "#c18311", "#b7978f"];
-    Config.pitchNoteColorsBright = ["#edd97b", "#55e8b1", "#ff0000", "#e819b4", "#f7a816", "#f2c9bf"];
-	Config.drumChannelColorsDim = ["#6f6f6f", "#996633", "#5869BD"];
-    Config.drumChannelColorsBright = ["#aaaaaa", "#ddaa77", "#768DFC"];
-    Config.drumNoteColorsDim = ["#aaaaaa", "#cc9966", "#5869BD"];
-    Config.drumNoteColorsBright = ["#eeeeee", "#f0d0bb", "#768DFC"];
+    Config.pitchChannelColorsDim = ["#bfae4e", "#009ccc", "#bd5859", "#d600c9", "#bb6906", "#a88981"];
+    Config.pitchChannelColorsBright = ["#ffe869", "#00c3ff", "#fc7677", "#ff00f4", "#fe8d00", "#f1c3b7"];
+    Config.pitchNoteColorsDim = ["#bfae4e", "#009ccc", "#bd5859", "#d600c9", "#bb6906", "#b7978f"];
+    Config.pitchNoteColorsBright = ["#ffe869", "#00C3ff", "#fc7677", "#ff00f4", "#fe8d00", "#f2c9bf"];
+    Config.drumChannelColorsDim = ["#ABABAB", "#a18f51", "#5869BD"];
+    Config.drumChannelColorsBright = ["#D6D6D6", "#f6bb6a", "#768DFC"];
+    Config.drumNoteColorsDim = ["#ABABAB", "#a18f51", "#5869BD"];
+    Config.drumNoteColorsBright = ["#D6D6D6", "#f6bb6a", "#768DFC"];
     Config.drumInterval = 6;
     Config.drumCount = 12;
     Config.pitchCount = 37;
